@@ -3,13 +3,14 @@ namespace PianoDataApp
 {
 	public class PianoType
 	{
-		public string PianoBrand;
-		public string PianoModel;
-		public int PianoSerialNumber;
-		public int PianoAge;
+		public string PianoBrand { get; set; }
+		public string PianoModel { get; set; }
+		public string PianoSerialNumber { get; set; }
+		public string PianoAge { get; set; }
 
 		public PianoType()
 		{
+			
 		}
 	}
 }

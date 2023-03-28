@@ -1,15 +1,30 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System;
+using System.IO;
 using PianoDataApp;
 
-displaymenu();
-//bool userWantsToExit = false;
-//while (!userWantsToExit)
-//{
+
+string filePath = "/Users/xcastudent/Desktop/PianoDataApp/clients.txt";
+List<string> lines = new List<string>();
 List<Customer> tuningCustomer = new List<Customer>();
+
+lines = File.ReadAllLines(filePath).ToList(); // Converts array to List
+foreach(string line in lines)
+{
+    string[] items = line.Split(',');
+    Customer p = new Customer(items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7]);
+    tuningCustomer.Add(p);
+}
+
+
+List<string> outContents = new List<string>();
+
+
 string confirmContinue;
 
 do
 {
+    displaymenu();
     Console.WriteLine("Enter your choice 1-6:");
     int choice = int.Parse(Console.ReadLine());
     Console.Clear();
@@ -17,61 +32,56 @@ do
     switch (choice)
     {
         case 1:
-            var newCustomer = new Customer();
             Console.WriteLine("Enter the first name of the client");
-            newCustomer.FirstName = Console.ReadLine();
+            var firstName = Console.ReadLine();
 
             Console.WriteLine("Enter the last name of the client");
-            newCustomer.LastName = Console.ReadLine();
+            var lastName = Console.ReadLine();
 
             Console.WriteLine("Enter the email of the client");
-            newCustomer.Email = Console.ReadLine();
+            var email = Console.ReadLine();
 
             Console.WriteLine("Enter the address of the client");
-            newCustomer.Address = Console.ReadLine();
+            var address = Console.ReadLine();
 
             Console.WriteLine("Enter the piano brand of the client");
-            newCustomer.PianoBrand = Console.ReadLine();
+            var pianoBrand = Console.ReadLine();
 
             Console.WriteLine("Enter the piano model of the client");
-            newCustomer.PianoModel = Console.ReadLine();
+            var pianoModel = Console.ReadLine();
 
             Console.WriteLine("Enter the piano age of the client");
-            newCustomer.PianoAge = int.Parse(Console.ReadLine());
+            var pianoAge = (Console.ReadLine());
 
             Console.WriteLine("Enter the piano serial number of the client");
-            newCustomer.PianoSerialNumber = int.Parse(Console.ReadLine());
+            var pianoSerialNumber = (Console.ReadLine());
 
+            var newCustomer = new Customer(firstName, lastName, email, address, pianoBrand, pianoModel, pianoSerialNumber, pianoAge);
             tuningCustomer.Add(newCustomer);
             break;
 
         case 2:
-            foreach (var i in tuningCustomer)
+            foreach (Customer p in tuningCustomer)
             {
-                Console.WriteLine(
-                    $"{i.FirstName} " +
-                    $"{i.LastName}" +
-                    $"\r\n{i.Address}" +
-                    $"\r\n{i.Email}" +
-                    $"\r\n{i.PianoBrand}" +
-                    $"\r\n{i.PianoModel}" +
-                    $"\r\n{i.PianoSerialNumber}" +
-                    $"\r\n{i.PianoAge}" +
-                    "\r\n" +
-                    "\r\n"
-                    );
+                Console.WriteLine(p);
+                outContents.Add(p.ToString());
             }
+
+            string outFile = "/Users/xcastudent/Desktop/PianoDataApp/outFile.txt";
+            File.WriteAllLines(outFile, outContents);
             break;
 
         default:
-        Console.WriteLine("Invalid Entry");
-        break;
+            Console.WriteLine("Invalid Entry");
+            break;
     }
 
-    Console.Write("Press y or Y to continue:");
+    Console.Write("Press y to continue or n to Exit:");
     confirmContinue = Console.ReadLine().ToString();
     Console.Clear();
 } while (confirmContinue == "Y" || confirmContinue == "y");
+
+Console.WriteLine("Thank you for using the Piano Data App!");
 
 
 
@@ -81,10 +91,7 @@ static void displaymenu()
 
     Console.WriteLine("======================================================\n                        PIANO DATA APP MENU                         \n======================================================");
     Console.WriteLine(" 1.Add New Client");
-    Console.WriteLine(" 2.Delete Clinet");
-    Console.WriteLine(" 3.Update Client");
-    Console.WriteLine(" 4.View all Client list");
-    Console.WriteLine(" 5.Show who the TOP 5 STUDENTS");
+    Console.WriteLine(" 2.View all Client List");
     Console.WriteLine(" 6.Find a Client by ID");
     Console.WriteLine("******************************************************\n");
 }
