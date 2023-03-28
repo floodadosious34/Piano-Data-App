@@ -92,7 +92,7 @@ static void displaymenu()
     Console.WriteLine("======================================================\n                        PIANO DATA APP MENU                         \n======================================================");
     Console.WriteLine(" 1.Add New Client");
     Console.WriteLine(" 2.View all Client List");
-    Console.WriteLine(" 6.Find a Client by ID");
+    Console.WriteLine(" 6.Delete a Client by Name");
     Console.WriteLine("******************************************************\n");
 }
 
