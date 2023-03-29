@@ -79,6 +79,7 @@ do
             }
             //Feature 4-Write to txt file
             string outFile = "/Users/xcastudent/Desktop/PianoDataApp/outFile.txt";
+            //sring outFile = @"C:\Desktop\PianoDataApp\outFile.txt";
             File.WriteAllLines(outFile, outContents);
             break;
 
@@ -111,6 +112,7 @@ do
             //Feature 4-Write to csv file
             csvcontent.AppendLine($"{afirstName},{blastName},{cemail},{daddress},{epianoBrand},{fpianoModel},{gpianoAge},{hpianoSerialNumber}");
             string csvPath = "/Users/xcastudent/Desktop/PianoDataApp/clients.csv";
+            //sring csvPath = @"C:\Desktop\PianoDataApp\clients.csv";
             File.AppendAllText(csvPath, csvcontent.ToString());
             //csvcontent.ToString()
             break;
