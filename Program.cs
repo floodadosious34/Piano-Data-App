@@ -7,13 +7,18 @@ using PianoDataApp;
 
 // path for clients file that is stored in project. May need to use the following code for running on PC.
 //sring filePath = @"C:\Desktop\PianoDataApp\clients.txt";
+
+string fileName = "clients.txt";
+
+string startupPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+string path = Path.Combine(startupPath, fileName);
 string filePath = "/Users/xcastudent/Desktop/PianoDataApp/clients.txt";
 
 //New List to hold strings to be inputed into client.txt
 List<string> lines = new List<string>();
 //Feature 3-List to hold each instance of Customer that is created
 List<Customer> tuningCustomer = new List<Customer>();
-lines = File.ReadAllLines(filePath).ToList(); // Converts array of string from clients.txt to List.
+lines = File.ReadAllLines(path).ToList(); // Converts array of string from clients.txt to List.
 
 //loop through the lines list to split the words at each comma, and then place the string into the new instance of customer being created.
 //add each customer into the tuningcustomer list.
@@ -30,7 +35,7 @@ List<string> outContents = new List<string>();
 //string holding the inout from user to continue
 string confirmContinue;
 
-//Feature#1-master loop to run the options for user to interact with.
+//Feature 1-master loop to run the options for user to interact with.
 do
 {
     displaymenu();
@@ -78,9 +83,10 @@ do
                 outContents.Add(p.ToString());
             }
             //Feature 4-Write to txt file
-            string outFile = "/Users/xcastudent/Desktop/PianoDataApp/outFile.txt";
+            string outFile = "outFile.txt";
             //sring outFile = @"C:\Desktop\PianoDataApp\outFile.txt";
-            File.WriteAllLines(outFile, outContents);
+            string path2 = Path.Combine(startupPath, outFile);
+            File.WriteAllLines(path2, outContents);
             break;
 
         case 3://take input for new user, and write to csv
@@ -111,9 +117,10 @@ do
             var hpianoSerialNumber = (Console.ReadLine());
             //Feature 4-Write to csv file
             csvcontent.AppendLine($"{afirstName},{blastName},{cemail},{daddress},{epianoBrand},{fpianoModel},{gpianoAge},{hpianoSerialNumber}");
-            string csvPath = "/Users/xcastudent/Desktop/PianoDataApp/clients.csv";
+            string csvPath = "clients.csv";
+            string path3 = Path.Combine(startupPath, csvPath);
             //sring csvPath = @"C:\Desktop\PianoDataApp\clients.csv";
-            File.AppendAllText(csvPath, csvcontent.ToString());
+            File.AppendAllText(path3, csvcontent.ToString());
             //csvcontent.ToString()
             break;
 
