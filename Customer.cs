@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 namespace PianoDataApp
 {
+	//Feature 3-Customer inherits from PianoType class
 	public class Customer : PianoType
 	{
 		public string FirstName { get; set; }
