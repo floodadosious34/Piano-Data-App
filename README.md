@@ -3,7 +3,7 @@
 ## Future Features
 
 - Add Delete, Update, and search for customer feature
-- Writ to a csv or database
+- Write to a csv or database
 - Run as a web application
 
 ## Description
