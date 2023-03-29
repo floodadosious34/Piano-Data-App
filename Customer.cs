@@ -24,8 +24,10 @@ namespace PianoDataApp
 
 		public override string ToString()
 		{
-			return "First Name: " + FirstName + "   Last Name: " + LastName + "   Email: " + Email + "   Address: " + Address + "   Piano Brand: " + PianoBrand + "   Piano Model: " + PianoModel + "   Serial Number: " + PianoSerialNumber + "   Piano Age: " + PianoAge;
-		}
+			return $"{FirstName},{LastName},{Email},{Address},{PianoBrand},{PianoModel},{PianoSerialNumber},{PianoAge}";
+
+        }
+		//"First Name: " + FirstName + "   Last Name: " + LastName + "   Email: " + Email + "   Address: " + Address + "   Piano Brand: " + PianoBrand + "   Piano Model: " + PianoModel + "   Serial Number: " + PianoSerialNumber + "   Piano Age: " + PianoAge;
 	}
 }
 

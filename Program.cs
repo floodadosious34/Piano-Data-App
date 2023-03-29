@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
 using System.IO;
+using System.Text;
+using System.Xml.Linq;
 using PianoDataApp;
 
 
@@ -25,7 +27,7 @@ string confirmContinue;
 do
 {
     displaymenu();
-    Console.WriteLine("Enter your choice 1-6:");
+    Console.WriteLine("Enter your choice 1-3:");
     int choice = int.Parse(Console.ReadLine());
     Console.Clear();
 
@@ -71,6 +73,39 @@ do
             File.WriteAllLines(outFile, outContents);
             break;
 
+        case 3:
+
+            StringBuilder csvcontent = new StringBuilder();
+            Console.WriteLine("Enter the first name of the client");
+            var afirstName = Console.ReadLine();
+
+            Console.WriteLine("Enter the last name of the client");
+            var blastName = Console.ReadLine();
+
+            Console.WriteLine("Enter the email of the client");
+            var cemail = Console.ReadLine();
+
+            Console.WriteLine("Enter the address of the client");
+            var daddress = Console.ReadLine();
+
+            Console.WriteLine("Enter the piano brand of the client");
+            var epianoBrand = Console.ReadLine();
+
+            Console.WriteLine("Enter the piano model of the client");
+            var fpianoModel = Console.ReadLine();
+
+            Console.WriteLine("Enter the piano age of the client");
+            var gpianoAge = (Console.ReadLine());
+
+            Console.WriteLine("Enter the piano serial number of the client");
+            var hpianoSerialNumber = (Console.ReadLine());
+            //csvcontent.AppendLine("First Name,Last Name, Email, Address, Brand, Model, Age, Serial#");
+            csvcontent.AppendLine($"{afirstName},{blastName},{cemail},{daddress},{epianoBrand},{fpianoModel},{gpianoAge},{hpianoSerialNumber}");
+            string csvPath = "/Users/xcastudent/Desktop/PianoDataApp/clients.csv";
+            File.AppendAllText(csvPath, csvcontent.ToString());
+            //csvcontent.ToString()
+            break;
+
         default:
             Console.WriteLine("Invalid Entry");
             break;
@@ -86,13 +121,14 @@ Console.WriteLine("Thank you for using the Piano Data App!");
 
 
 
+
 static void displaymenu()
 {
 
     Console.WriteLine("======================================================\n                        PIANO DATA APP MENU                         \n======================================================");
     Console.WriteLine(" 1.Add New Client");
-    Console.WriteLine(" 2.View all Client List");
-    Console.WriteLine(" 6.Delete a Client by Name");
+    Console.WriteLine(" 2.View all Client List in Console and clients.txt");
+    Console.WriteLine(" 3.Add new Client to csv file and view all Client List in CSV");
     Console.WriteLine("******************************************************\n");
 }
 
