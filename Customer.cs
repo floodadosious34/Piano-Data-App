@@ -10,7 +10,7 @@ namespace PianoDataApp
 		public string Email { get; set; }
 		public string Address { get; set; }
       
-
+		//Customer Constructor with props inheriting from PianoType class
         public Customer(string FirstName, string LastName, string Email, string Address, string Brand, string Model, string Serial, string Age)
 		{
 			this.FirstName = FirstName;

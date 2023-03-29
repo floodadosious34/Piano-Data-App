@@ -38,6 +38,7 @@ do
     int choice = int.Parse(Console.ReadLine());
     Console.Clear();
 
+    //Switch statement for executing user options
     switch (choice)
     {
         case 1:
@@ -73,6 +74,7 @@ do
             foreach (Customer p in tuningCustomer)
             {
                 Console.WriteLine(p);
+                //retruns each customer property as a string and places into outContenets List to be written to txt file.
                 outContents.Add(p.ToString());
             }
             //Feature 4-Write to txt file
@@ -80,7 +82,7 @@ do
             File.WriteAllLines(outFile, outContents);
             break;
 
-        case 3://write to csv
+        case 3://take input for new user, and write to csv
 
             StringBuilder csvcontent = new StringBuilder();
             Console.WriteLine("Enter the first name of the client");
