@@ -5,14 +5,14 @@ using System.Text;
 using System.Xml.Linq;
 using PianoDataApp;
 
-// path for clients file that is stored in project. May need to use the following code for running on PC.
-//sring filePath = @"C:\Desktop\PianoDataApp\clients.txt";
-
+//string holding clinets.txt file
 string fileName = "clients.txt";
 
+// This getd the current working directory of the project
 string startupPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+
+//Combines current working directory with file name to make complete path to the txt file.
 string path = Path.Combine(startupPath, fileName);
-string filePath = "/Users/xcastudent/Desktop/PianoDataApp/clients.txt";
 
 //New List to hold strings to be inputed into client.txt
 List<string> lines = new List<string>();
@@ -84,7 +84,6 @@ do
             }
             //Feature 4-Write to txt file
             string outFile = "outFile.txt";
-            //sring outFile = @"C:\Desktop\PianoDataApp\outFile.txt";
             string path2 = Path.Combine(startupPath, outFile);
             File.WriteAllLines(path2, outContents);
             break;
@@ -119,9 +118,7 @@ do
             csvcontent.AppendLine($"{afirstName},{blastName},{cemail},{daddress},{epianoBrand},{fpianoModel},{gpianoAge},{hpianoSerialNumber}");
             string csvPath = "clients.csv";
             string path3 = Path.Combine(startupPath, csvPath);
-            //sring csvPath = @"C:\Desktop\PianoDataApp\clients.csv";
             File.AppendAllText(path3, csvcontent.ToString());
-            //csvcontent.ToString()
             break;
 
         default:
